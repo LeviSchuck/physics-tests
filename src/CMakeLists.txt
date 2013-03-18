@@ -9,11 +9,11 @@ IF(APPLE)
                      GLUT_LIBRARY
                      OpenGL_LIBRARY)
    set(EXTRA_LIBS ${COCOA_LIBRARY} ${GLUT_LIBRARY} ${OpenGL_LIBRARY})
-   set(CMAKE_XCODE_ATTRIBUTE_GCC_VERSION "com.apple.compilers.llvm.clang.1_0")
-   set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD "c++11")
+   #set(CMAKE_XCODE_ATTRIBUTE_GCC_VERSION "com.apple.compilers.llvm.clang.1_0")
+   #set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD "c++11")
    #set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
    #set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
-   set(CMAKE_CXX_FLAGS "-std=c++11")
+   #set(CMAKE_CXX_FLAGS "-std=c++11")
 ENDIF (APPLE)
 set(CMAKE_XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN "YES")
 set(CMAKE_CXX_LINK_FLAGS " -framework IOKit ")
@@ -25,12 +25,14 @@ list(APPEND main_sources
 	lib/converter.cpp lib/converter.hpp
 	lib/enums.hpp
 	lib/gentity.cpp lib/gentity.hpp
+	lib/graphics.cpp lib/graphics.hpp
 	lib/object.cpp lib/object.hpp
 	lib/pentity.cpp lib/pentity.hpp
 	lib/test.cpp lib/test.hpp
 	lib/vec.hpp
 	lib/world.hpp
 	null/world.cpp null/world.hpp
+
 )
 
 add_executable(phys MACOSX_BUNDLE main.cpp ${main_sources})
