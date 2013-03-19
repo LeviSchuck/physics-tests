@@ -86,6 +86,9 @@ namespace Graphical {
 	bool Engine::exitRequested(){
 		return _internals->receiver.IsKeyDown(irr::KEY_ESCAPE);
 	}
+	void * Engine::manager(){
+		return _internals->smgr;
+	}
 	Engine::~Engine(){
 		delete _internals;
 	}

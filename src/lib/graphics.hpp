@@ -9,5 +9,6 @@ namespace Graphical {
 		bool exitRequested();
 		void closeup();
 		~Engine();
+		void * manager();
 	};
 };
