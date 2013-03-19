@@ -6,7 +6,6 @@
 #ifdef __APPLE__
 #include <CoreFoundation/CFBundle.h>
 #include <CoreFoundation/CFString.h>
-#include <OpenGl/OpenGL.h>
 // function provides some Mac OS X specific source code to load files from the resources of the application bundle.
 char * resPath(char **argv, char* name, char* type ) 
 {
