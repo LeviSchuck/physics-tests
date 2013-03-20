@@ -14,13 +14,13 @@ namespace Physical {
 		World::Earth * _world;
 		bool _static;
 		size_t createShape(const Entity_Types type, const Mesh & m);
-		size_t createShape(const Entity_Types type, const Vec3 data);
+		size_t createShape(const Entity_Types type, const Vec3 data, float constant = 1);
 		void makeBody(const Transform t, const MassProperties mass);
 	public:
 		Entity(const Entity_Types type, const bool Static, World::Earth *);
 		virtual ~Entity();
 		void init(const Mesh & m, const MassProperties mass, const Transform t);
-		void init(const Vec3 data, const MassProperties mass, const Transform t);
+		void init(const Vec3 data, const MassProperties mass, const Transform t, const float constant = 1);
 		void init(const ShapeList & list, const MassProperties mass, const Transform t);
 		
 		const Vec3 getPosition() const;

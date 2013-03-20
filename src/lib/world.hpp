@@ -9,8 +9,9 @@ namespace World {
 		virtual void tick(float delta) = 0;
 		virtual size_t addSphere(const float radius) = 0;
 		virtual size_t addBar(const Vec3 & dimensions) = 0;
-		virtual size_t addPlane(const Vec3 & origin, const Vec4 & orientation) = 0;
+		virtual size_t addPlane(const Vec3 & equation, const float constant) = 0;
 		virtual size_t addMesh(const Mesh & mesh) = 0;
+		virtual size_t addCapsule(const float length, const float radius) = 0;
 		virtual size_t compoundShapes(::std::vector< ::std::pair<size_t, Transform> > list) = 0;
 		virtual size_t makeRigidBody(const size_t index, const MassProperties & mass, const Transform & trans) = 0;
 		virtual size_t makeStaticBody(const size_t index, const Transform & trans) = 0;

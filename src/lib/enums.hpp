@@ -5,4 +5,5 @@ enum Entity_Types{
 	E_SPHERE,
 	E_CAPSULE,
 	E_MESH,
+	E_PLANE
 };

@@ -21,8 +21,8 @@ namespace Physical {
 		//create body
 		makeBody(t, mass);
 	}
-	void Entity::init(const Vec3 data, const MassProperties mass, const Transform t){
-		size_t shape = createShape(_type, data);
+	void Entity::init(const Vec3 data, const MassProperties mass, const Transform t, const float constant){
+		size_t shape = createShape(_type, data, constant);
 		_shape_index.push_back(shape);
 		//create body
 		makeBody(t, mass);
@@ -70,9 +70,55 @@ namespace Physical {
 		}
 	}
 	size_t Entity::createShape(const Entity_Types type, const Mesh & m){
-		return 0;
+		size_t shape;
+		switch(type){
+			case E_MESH:
+			{
+				shape = _world->addMesh(m);
+			}
+			break;
+			default:
+			{
+				throw "Type not compatible!";
+			}
+		}
+		return shape;
 	}
-	size_t Entity::createShape(const Entity_Types type, const Vec3 data){
+	size_t Entity::createShape(const Entity_Types type, const Vec3 data, float constant){
+		size_t shape;
+		switch(type){
+			case E_BAR:
+			{
+				shape = _world->addBar(data);
+			}
+			break;
+			case E_SPHERE:
+			{
+				shape = _world->addSphere(
+					::std::tr1::get<0>(data)
+					);
+			}
+			break;
+			case E_CAPSULE:
+			{
+				shape = _world->addCapsule(
+					::std::tr1::get<0>(data),
+					::std::tr1::get<1>(data)
+					);
+			}
+			break;
+			case E_PLANE:
+			{
+				shape = _world->addPlane(
+					data,
+					constant
+					);
+			}
+			default:
+			{
+				throw "Type not compatible!";
+			}
+		}
 		return 0;
 	}
 

@@ -11,10 +11,13 @@ size_t NullWorld::addSphere(const float radius){
 size_t NullWorld::addBar(const Vec3 & dimensions){
 	return 1;
 }
-size_t NullWorld::addPlane(const Vec3 & origin, const Vec4 & orientation){
+size_t NullWorld::addPlane(const Vec3 & equation, const float constant){
 	return 1;
 }
 size_t NullWorld::addMesh(const Mesh & mesh){
+	return 1;
+}
+size_t NullWorld::addCapsule(const float length, const float radius){
 	return 1;
 }
 size_t NullWorld::compoundShapes(::std::vector< ::std::pair<size_t, Transform> > list){
