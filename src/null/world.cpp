@@ -17,7 +17,7 @@ size_t NullWorld::addPlane(const Vec3 & origin, const Vec4 & orientation){
 size_t NullWorld::addMesh(const Mesh & mesh){
 	return 1;
 }
-size_t NullWorld::compoundShapes(::std::vector<size_t> list){
+size_t NullWorld::compoundShapes(::std::vector< ::std::pair<size_t, Transform> > list){
 	return 1;
 }
 size_t NullWorld::makeRigidBody(const size_t index, const MassProperties & mass, const Transform & trans){

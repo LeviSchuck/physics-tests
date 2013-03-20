@@ -3,10 +3,11 @@
 #include "math.hpp"
 
 namespace Physical {
-	Entity::Entity(const Entity_Types type, World::Earth * world){
+	Entity::Entity(const Entity_Types type, const bool s, World::Earth * world){
 		_world = world;
 		_type = type;
 		_body_index = 0;
+		_static = s;
 	}
 	Entity::~Entity(){
 		_world->removeBody(_body_index);
@@ -14,17 +15,19 @@ namespace Physical {
 			_world->removeShape(shape);
 		});
 	}
-	void Entity::init(const Mesh & m, const MassProperties mass){
+	void Entity::init(const Mesh & m, const MassProperties mass, const Transform t){
 		size_t shape = createShape(_type, m);
 		_shape_index.push_back(shape);
 		//create body
+		makeBody(t, mass);
 	}
-	void Entity::init(const Vec3 data, const MassProperties mass){
+	void Entity::init(const Vec3 data, const MassProperties mass, const Transform t){
 		size_t shape = createShape(_type, data);
 		_shape_index.push_back(shape);
 		//create body
+		makeBody(t, mass);
 	}
-	void Entity::init(const ShapeList & list, const MassProperties mass){
+	void Entity::init(const ShapeList & list, const MassProperties mass, const Transform t){
 		std::vector< ::std::pair<size_t, Transform> > shapes;
 		size_t compound;
 		//Create the shapes
@@ -56,7 +59,15 @@ namespace Physical {
 			_shape_index.push_back(s.first);
 		});
 		//create body
-		
+		makeBody(t, mass);
+	}
+	void Entity::makeBody(const Transform t, const MassProperties mass){
+		size_t shape = _shape_index.front();
+		if(_static){
+			_body_index = _world->makeStaticBody(shape, t);
+		}else{
+			_body_index = _world->makeRigidBody(shape, mass, t);
+		}
 	}
 	size_t Entity::createShape(const Entity_Types type, const Mesh & m){
 		return 0;

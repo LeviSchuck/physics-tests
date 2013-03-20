@@ -12,14 +12,16 @@ namespace Physical {
 		size_t _body_index;
 		::std::vector<size_t> _shape_index;
 		World::Earth * _world;
+		bool _static;
 		size_t createShape(const Entity_Types type, const Mesh & m);
 		size_t createShape(const Entity_Types type, const Vec3 data);
+		void makeBody(const Transform t, const MassProperties mass);
 	public:
-		Entity(const Entity_Types type, World::Earth *);
+		Entity(const Entity_Types type, const bool Static, World::Earth *);
 		virtual ~Entity();
-		void init(const Mesh & m, const MassProperties mass);
-		void init(const Vec3 data, const MassProperties mass);
-		void init(const ShapeList & list, const MassProperties mass);
+		void init(const Mesh & m, const MassProperties mass, const Transform t);
+		void init(const Vec3 data, const MassProperties mass, const Transform t);
+		void init(const ShapeList & list, const MassProperties mass, const Transform t);
 		
 		const Vec3 getPosition() const;
 		const Vec4 getQuatOrientation() const;

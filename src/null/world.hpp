@@ -7,7 +7,7 @@ class NullWorld : public World::Earth {
     virtual size_t addBar(const Vec3 & dimensions);
     virtual size_t addPlane(const Vec3 & origin, const Vec4 & orientation);
     virtual size_t addMesh(const Mesh & mesh);
-    virtual size_t compoundShapes(::std::vector<size_t> list);
+    virtual size_t compoundShapes(::std::vector< ::std::pair<size_t, Transform> > list);
     virtual size_t makeRigidBody(const size_t index, const MassProperties & mass, const Transform & trans);
     virtual size_t makeStaticBody(const size_t index, const Transform & trans);
     //virtual size_t addHinge(size_t first, size_t second, );
