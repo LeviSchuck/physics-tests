@@ -10,10 +10,10 @@ IF(APPLE)
                      OpenGL_LIBRARY)
    set(EXTRA_LIBS ${COCOA_LIBRARY} ${GLUT_LIBRARY} ${OpenGL_LIBRARY})
    #set(CMAKE_XCODE_ATTRIBUTE_GCC_VERSION "com.apple.compilers.llvm.clang.1_0")
-   #set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD "c++11")
+   set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LANGUAGE_STANDARD "c++11")
    #set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
    #set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
-   #set(CMAKE_CXX_FLAGS "-std=c++11")
+   set(CMAKE_CXX_FLAGS "-std=c++11")
 ENDIF (APPLE)
 set(CMAKE_XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN "YES")
 set(CMAKE_CXX_LINK_FLAGS " -framework IOKit ")
@@ -23,6 +23,7 @@ link_directories(/usr/local/lib)
 
 list(APPEND main_sources 
 	lib/converter.cpp lib/converter.hpp
+   lib/math.cpp lib/math.hpp
 	lib/enums.hpp
 	lib/gentity.cpp lib/gentity.hpp
 	lib/graphics.cpp lib/graphics.hpp

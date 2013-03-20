@@ -1,6 +1,7 @@
 #pragma once
 #include "vec.hpp"
 #include "enums.hpp"
+#include "mesh.hpp"
 #include "graphics.hpp"
 namespace Graphical {
 	class Entity {

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "vec.hpp"
+#include "mesh.hpp"
 namespace World {
 	class Earth {
 	public:
@@ -10,7 +11,7 @@ namespace World {
 		virtual size_t addBar(const Vec3 & dimensions) = 0;
 		virtual size_t addPlane(const Vec3 & origin, const Vec4 & orientation) = 0;
 		virtual size_t addMesh(const Mesh & mesh) = 0;
-		virtual size_t compoundShapes(::std::vector<size_t> list) = 0;
+		virtual size_t compoundShapes(::std::vector< ::std::pair<size_t, Transform> > list) = 0;
 		virtual size_t makeRigidBody(const size_t index, const MassProperties & mass, const Transform & trans) = 0;
 		virtual size_t makeStaticBody(const size_t index, const Transform & trans) = 0;
 		//virtual size_t addHinge(size_t first, size_t second, );
