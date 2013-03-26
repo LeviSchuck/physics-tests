@@ -144,8 +144,11 @@ namespace World {
 		return _contents->_type;
 	}
 
-	const Mesh & Object::getMesh() const{
+	const Mesh Object::getMesh() const{
 		static Mesh m;
+		if(_contents->_g){
+			return _contents->_g->getMesh();
+		}
 		return m;
 	}
 };

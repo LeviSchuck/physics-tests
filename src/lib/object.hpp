@@ -30,7 +30,7 @@ namespace World {
 
 		void color(const Vec4 color);
 
-		const Mesh & getMesh() const;
+		const Mesh getMesh() const;
 
 		const Entity_Types type() const;
 
