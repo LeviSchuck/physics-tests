@@ -8,8 +8,10 @@ namespace Graphical {
 		Entity_Types _type;
 		class EntityInternals * _internals;
 	public:
-		Entity(Engine * engine, const Entity_Types type, const Vec3 data);
-		Entity(Engine * engine, const Entity_Types type, const char * mesh);
+		Entity(Engine * engine);
+		void init(const Entity_Types type, const Vec3 data);
+		void init(const Entity_Types type, const char * mesh);
+		void init(ShapeList & shapes);
 		const Vec3 getPosition() const;
 		void setPosition(const Vec3 & vec);
 		void hide();

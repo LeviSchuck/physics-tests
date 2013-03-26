@@ -31,24 +31,38 @@ namespace Physical {
 		std::vector< ::std::pair<size_t, Transform> > shapes;
 		size_t compound;
 		//Create the shapes
-		for_each(list.begin(), list.end(), [&](ShapeList::value_type shape){
-			if(std::tr1::get<0>(shape)){
-				//Mesh!
-				size_t s = createShape(
-					std::tr1::get<1>(shape).second.first,
-					std::tr1::get<1>(shape).second.second
+		for_each(list.begin(), list.end(), [&](const ShapeList::value_type & shape){
+			switch(shape.first.type){
+				case E_CAPSULE:
+				case E_SPHERE:
+				case E_BAR:
+				case E_PLANE:
+				{
+					size_t s = createShape(
+						shape.first.type,
+						Math::Vec4ToVec3(shape.first.data),
+						Math::VecLast(shape.first.data)
 					);
-				Transform t = std::tr1::get<2>(shape);
-				::std::pair<size_t, Transform> p(s,t);
-				shapes.push_back(p);
-			}else{
-				size_t s = createShape(
-					std::tr1::get<1>(shape).first.first,
-					std::tr1::get<1>(shape).first.second
+					Transform t = shape.second;
+					::std::pair<size_t, Transform> p(s,t);
+					shapes.push_back(p);
+				}
+				break;
+				case E_MESH:
+				{
+					size_t s = createShape(
+						shape.first.type,
+						shape.first.rawMesh
 					);
-				Transform t = std::tr1::get<2>(shape);
-				::std::pair<size_t, Transform> p(s,t);
-				shapes.push_back(p);
+					Transform t = shape.second;
+					::std::pair<size_t, Transform> p(s,t);
+					shapes.push_back(p);
+				}
+				break;
+				default:
+				{
+					throw "Not valid shape type!";
+				}
 			}
 		});
 		//Got a list of shapes, make the compound shape

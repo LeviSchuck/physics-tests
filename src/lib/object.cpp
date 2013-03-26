@@ -29,7 +29,8 @@ namespace World {
 		const MassProperties mass,
 		const Transform t){
 		_contents->_type = type;
-		_contents->_g = new Graphical::Entity(_contents->_engine, type, mesh);
+		_contents->_g = new Graphical::Entity(_contents->_engine);
+		_contents->_g->init(type, mesh);
 		_contents->_g->setOrientation(t.second);
 		_contents->_g->setPosition(t.first);
 		_contents->_p = new Physical::Entity(type, _contents->_static, _contents->_earth);
@@ -41,7 +42,8 @@ namespace World {
 		const MassProperties mass,
 		const Transform t){
 		_contents->_type = type;
-		_contents->_g = new Graphical::Entity(_contents->_engine, type, Math::Vec4ToVec3(data));
+		_contents->_g = new Graphical::Entity(_contents->_engine);
+		_contents->_g->init(type, Math::Vec4ToVec3(data));
 		_contents->_g->setOrientation(t.second);
 		_contents->_g->setPosition(t.first);
 		_contents->_p = new Physical::Entity(type, _contents->_static, _contents->_earth);
@@ -53,7 +55,7 @@ namespace World {
 		const ShapeList & list,
 		const MassProperties mass,
         const Transform t){
-		//TODO
+		
 	}
 	Object::~Object(){
 		delete _contents;
