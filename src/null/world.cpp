@@ -74,6 +74,5 @@ void NullWorld::transformBody(const size_t index, const Transform & trans){
 	_contents->bodies[index].trans = trans;
 }
 const Transform NullWorld::getTransformation(const size_t index){
-	static Transform t(Vec3(0,0,0),Vec4(0,0,0,1));
-	return t;
+	return _contents->bodies[index].trans;
 }
