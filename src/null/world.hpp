@@ -1,6 +1,11 @@
 #include "lib/world.hpp"
 
 class NullWorld : public World::Earth {
+private:
+    class NullWorldContents * _contents;
+public:
+    NullWorld();
+    virtual ~NullWorld();
 	virtual void instantiate();
     virtual void tick(float delta);
     virtual size_t addSphere(const float radius);

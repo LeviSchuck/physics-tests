@@ -22,7 +22,6 @@ include_directories(/usr/local/include ${CMAKE_CURRENT_SOURCE_DIR})
 link_directories(/usr/local/lib)
 
 list(APPEND main_sources 
-	lib/converter.cpp lib/converter.hpp
    lib/math.cpp lib/math.hpp
 	lib/enums.hpp
 	lib/gentity.cpp lib/gentity.hpp

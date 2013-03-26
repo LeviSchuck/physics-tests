@@ -7,7 +7,8 @@ namespace World {
 
 	}
 	Object::~Object(){
-
+		if(_g) delete _g;
+		if(_p) delete _p;
 	}
 	
 	const Vec3 Object::getPosition() const{
