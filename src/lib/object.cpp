@@ -51,11 +51,16 @@ namespace World {
 
 	}
 	void Object::init(
-		const Entity_Types type,
-		const ShapeList & list,
+		ShapeList & list,
 		const MassProperties mass,
         const Transform t){
-		
+		_contents->_type = E_COMPOUND;
+		_contents->_g = new Graphical::Entity(_contents->_engine);
+		_contents->_g->init(list);
+		_contents->_g->setOrientation(t.second);
+		_contents->_g->setPosition(t.first);
+		_contents->_p = new Physical::Entity(_contents->_type, _contents->_static, _contents->_earth);
+		_contents->_p->init(list, mass, t);
 	}
 	Object::~Object(){
 		delete _contents;

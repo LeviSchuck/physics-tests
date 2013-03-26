@@ -15,7 +15,7 @@ namespace World {
 
 		void init(const Entity_Types, const char * mesh, const MassProperties mass, const Transform t);
 		void init(const Entity_Types, const Vec4 data, const MassProperties mass, const Transform t);
-		void init(const Entity_Types, const ShapeList & list, const MassProperties mass, const Transform t);
+		void init(ShapeList & list, const MassProperties mass, const Transform t);
 
 		const Vec3 getPosition() const;
 		const Vec4 getQuatOrientation() const;
