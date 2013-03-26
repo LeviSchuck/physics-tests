@@ -17,7 +17,7 @@ namespace Graphical {
 			node = NULL;
 		}
 	};
-	Entity::Entity(class Engine * engine, const Entity_Types type, const Vec3 & data){
+	Entity::Entity(class Engine * engine, const Entity_Types type, const Vec3 data){
 		_internals = new EntityInternals();
 		_internals->engine = engine;
 		switch(type){
@@ -107,7 +107,7 @@ namespace Graphical {
 	void Entity::show(){
 		_internals->node->setVisible(true);
 	}
-	void Entity::color(const Vec4 & color){
+	void Entity::color(const Vec4 color){
 		irr::video::SColor color2(
 			std::tr1::get<0>(color)*255,
 			std::tr1::get<1>(color)*255,
@@ -136,7 +136,7 @@ namespace Graphical {
 			);
 		return v;
 	}
-	void Entity::setOrientation(const Vec4 & vec){
+	void Entity::setOrientation(const Vec4 vec){
 		irr::core::vector3df rot;
 		irr::core::quaternion quat(
 			std::tr1::get<0>(vec),
@@ -147,7 +147,7 @@ namespace Graphical {
 		quat.toEuler(rot);
 		_internals->node->setRotation(rot);
 	}
-	void Entity::setOrientation(const Vec3 & vec){
+	void Entity::setOrientation(const Vec3 vec){
 		_internals->node->setRotation(irr::core::vector3df(
 			std::tr1::get<0>(vec),
 			std::tr1::get<1>(vec),

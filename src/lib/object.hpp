@@ -1,36 +1,38 @@
 #pragma once
 #include "enums.hpp"
+#include "mesh.hpp"
 #include "pentity.hpp"
 #include "gentity.hpp"
 #include "world.hpp"
+#include "graphics.hpp"
 
 namespace World {
 	class Object {
-		Entity_Types _type;
-		Graphical::Entity * _g;
-		Physical::Entity * _p;
+		class ObjectContents * _contents;
 	public:
-		Object(const Entity_Types type, const Vec3 & data, const MassProperties & mass, World::Earth *);
-		Object(const Entity_Types type, const char * mesh, const MassProperties & mass, World::Earth *);
+		Object(World::Earth *, Graphical::Engine *);
 		virtual ~Object();
-		
+
+		void init(const Entity_Types, const char * mesh, const MassProperties mass, const Transform t);
+		void init(const Entity_Types, const Vec4 data, const MassProperties mass, const Transform t);
+		void init(const Entity_Types, const ShapeList & list, const MassProperties mass, const Transform t);
+
 		const Vec3 getPosition() const;
 		const Vec4 getQuatOrientation() const;
 		const Vec3 getEulerOrientation() const;
-		void setPosition(const Vec3 & vec);
-		void setOrientation(const Vec4 & vec);
-		void setOrientation(const Vec3 & vec);
+		void setPosition(const Vec3 vec);
+		void setOrientation(const Vec4 vec);
+		void setOrientation(const Vec3 vec);
+		void setStatic(bool);
 
 		void hideGraphics();
 		void showGraphics();
-		void hidePhysics();
-		void showPhysics();
 
-		void color(const Vec4 & color);
+		void color(const Vec4 color);
 
 		const Mesh & getMesh() const;
 
-		inline const Entity_Types type() const {return _type;}
+		const Entity_Types type() const;
 
 	};
 }

@@ -2,7 +2,7 @@
 #include "math.hpp"
 
 namespace Math{
-	const Vec3 QuaternionToEuler(Vec4 quat){
+	const Vec3 QuaternionToEuler(const Vec4 quat){
 		Vec3 vec;
 		double x,y,z,w;
 		double yaw,pitch,roll;
@@ -21,7 +21,7 @@ namespace Math{
 		std::tr1::get<2>(vec) = roll;
 		return vec;
 	}
-	const Vec4 EulerToQuaternion(Vec3 vec){
+	const Vec4 EulerToQuaternion(const Vec3 vec){
 		double x,y,z,w;
 		double c1,c2,c3;
 		double s1,s2,s3;
@@ -50,6 +50,26 @@ namespace Math{
 		std::tr1::get<2>(quat) = z;
 		std::tr1::get<3>(quat) = w;
 		return quat;
+	}
+	const Vec4 Vec3ToVec4(const Vec3 v){
+		Vec4 r;
+		std::tr1::get<0>(r) = std::tr1::get<0>(v);
+		std::tr1::get<1>(r) = std::tr1::get<1>(v);
+		std::tr1::get<2>(r) = std::tr1::get<2>(v);
+		return r;
+	}
+	const Vec3 Vec4ToVec3(const Vec4 v){
+		Vec3 r;
+		std::tr1::get<0>(r) = std::tr1::get<0>(v);
+		std::tr1::get<1>(r) = std::tr1::get<1>(v);
+		std::tr1::get<2>(r) = std::tr1::get<2>(v);
+		return r;
+	}
+	const float VecLast(const Vec4 v){
+		return std::tr1::get<3>(v);
+	}
+	const float VecLast(const Vec3 v){
+		return std::tr1::get<2>(v);
 	}
 
 };
