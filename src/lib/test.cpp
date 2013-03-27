@@ -27,4 +27,9 @@ void Testing::destroy(){
 		instances.pop_back();
 	}
 }
+void Testing::update(){
+	for(size_t i = 0; i < instances.size(); ++i){
+		instances[i]->update();
+	}
+}
 

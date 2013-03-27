@@ -23,6 +23,7 @@ class Testing {
 public:
 	void instantiate(TestEnvironment*, size_t count, size_t factory_index);
 	void destroy();
+	void update();
 
 };
 
@@ -30,6 +31,7 @@ class TestInstance {
 protected:
 	size_t id;
 public:
+	virtual void update() = 0;
 	virtual float difference(const TestInstance & other) {
 		return 0;
 	}

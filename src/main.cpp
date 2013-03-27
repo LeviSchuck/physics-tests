@@ -22,6 +22,7 @@ int main(int argc, char* argv[]){
 
 	while(!graphics->exitRequested()){
 		graphics->render();
+		t.update();
 	}
 	graphics->closeup();
 	delete graphics;

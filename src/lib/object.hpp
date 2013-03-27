@@ -23,6 +23,8 @@ namespace World {
 		void setOrientation(const Vec3 vec);
 		void setStatic(bool);
 
+		void sync();
+
 		void hideGraphics();
 		void showGraphics();
 
@@ -31,6 +33,7 @@ namespace World {
 		const Mesh getMesh() const;
 
 		const Entity_Types type() const;
+
 
 	};
 }

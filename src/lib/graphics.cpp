@@ -62,7 +62,7 @@ namespace Graphical {
 			for(int y = 0; y < 20; y++){
 				_internals->smgr->addLightSceneNode(
 					0,
-					irr::core::vector3df(15*x,15*y,15),
+					irr::core::vector3df(15*x,15,15*y),
         			irr::video::SColorf(rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), 1.0f), 
         			10.0f
         			);

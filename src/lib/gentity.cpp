@@ -27,8 +27,6 @@ namespace Graphical {
 		::irr::scene::ISceneNode * makeNode(const Entity_Types type, const Vec3 data, ::irr::scene::ISceneNode * parent = NULL){
 			::irr::scene::ISceneNode * node = NULL;
 			::irr::scene::ISceneManager * smgr = asM(engine->manager());
-            std::cout << "engine2: " << std::hex << engine << std::endl;
-            std::cout << "smgr2: " << std::hex << smgr << std::endl;
 			switch(type){
 				case E_BAR:
 				{

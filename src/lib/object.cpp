@@ -130,6 +130,11 @@ namespace World {
 		_contents->_static = s;
 	}
 
+	void Object::sync(){
+		_contents->_g->setPosition(_contents->_p->getPosition());
+		_contents->_g->setOrientation(_contents->_p->getEulerOrientation());
+	}
+
 	void Object::hideGraphics(){
 		if(_contents->_g){
 			_contents->_g->hide();
