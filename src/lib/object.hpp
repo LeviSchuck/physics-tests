@@ -3,14 +3,12 @@
 #include "mesh.hpp"
 #include "pentity.hpp"
 #include "gentity.hpp"
-#include "world.hpp"
-#include "graphics.hpp"
-
+class TestEnvironment;
 namespace World {
 	class Object {
 		class ObjectContents * _contents;
 	public:
-		Object(World::Earth *, Graphical::Engine *);
+		Object(TestEnvironment * env);
 		virtual ~Object();
 
 		void init(const Entity_Types, const char * mesh, const MassProperties mass, const Transform t);

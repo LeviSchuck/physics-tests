@@ -2,7 +2,7 @@
 #include "vec.hpp"
 #include "enums.hpp"
 #include "mesh.hpp"
-#include "graphics.hpp"
+#include "forward.hpp"
 namespace Graphical {
 	class Entity {
 		Entity_Types _type;

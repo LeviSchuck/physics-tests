@@ -1,5 +1,19 @@
 #include <map>
-#include "world.hpp"
+#include "nworld.hpp"
+
+class NullWorldFactory : public World::EarthFactory {
+public:
+    virtual World::Earth * instantiate() {
+        return new NullWorld();
+    }
+    NullWorldFactory(){
+        World::EarthFactory::addEarth(this);
+    }
+    virtual const char * getName(){
+    	return "Null World";
+    }
+};
+static NullWorldFactory nwf;
 
 class NullContainer {
 public:

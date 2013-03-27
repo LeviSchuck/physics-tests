@@ -1,3 +1,6 @@
+#include <iostream>
+
+
 #include <irrlicht/irrlicht.h>
 #include "gentity.hpp"
 #include "graphics.hpp"
@@ -23,10 +26,13 @@ namespace Graphical {
 		}
 		::irr::scene::ISceneNode * makeNode(const Entity_Types type, const Vec3 data, ::irr::scene::ISceneNode * parent = NULL){
 			::irr::scene::ISceneNode * node = NULL;
+			::irr::scene::ISceneManager * smgr = asM(engine->manager());
+            std::cout << "engine2: " << std::hex << engine << std::endl;
+            std::cout << "smgr2: " << std::hex << smgr << std::endl;
 			switch(type){
 				case E_BAR:
 				{
-					node = asM(engine->manager())->addCubeSceneNode(
+					node = smgr->addCubeSceneNode(
 						1,parent,-1,irr::core::vector3df(0, 0, 0),irr::core::vector3df(0, 0, 0),
 						irr::core::vector3df(
 							std::tr1::get<0>(data),
@@ -37,7 +43,7 @@ namespace Graphical {
 				break;
 				case E_SPHERE:
 				{
-					node = asM(engine->manager())->addSphereSceneNode(
+					node = smgr->addSphereSceneNode(
 						std::tr1::get<0>(data),
 						16,
 						parent
@@ -48,9 +54,9 @@ namespace Graphical {
 				case E_CAPSULE:
 				{
 					//Bit of a hackery since they don't have one directly..
-					node = asM(engine->manager())->addEmptySceneNode(parent);
-					asM(engine->manager())->addMeshSceneNode(
-						asM(engine->manager())->addArrowMesh("arrow",
+					node = smgr->addEmptySceneNode(parent);
+					smgr->addMeshSceneNode(
+						smgr->addArrowMesh("arrow",
 						irr::video::SColor(255, 255, 0, 0), irr::video::SColor(255, 255, 0, 0),
 						4,8,
 						std::tr1::get<1>(data)+0.001f,	// 0. arrow's total length
@@ -58,14 +64,14 @@ namespace Graphical {
 						0.001f,               			// 2. arrow cone's height 
 						std::tr1::get<0>(data)*2.0f		// 3. arrow's diameter
 					), node);
-					asM(engine->manager())->addSphereSceneNode(
+					smgr->addSphereSceneNode(
 						16,
 						std::tr1::get<0>(data),
 						node,
 						-1,
 						irr::core::vector3df(0,std::tr1::get<1>(data)/2.0f,0)
 						);
-					asM(engine->manager())->addSphereSceneNode(
+					smgr->addSphereSceneNode(
 						16,
 						std::tr1::get<0>(data),
 						node,
@@ -132,7 +138,7 @@ namespace Graphical {
 	}
 	void Entity::init(const Entity_Types type, const Vec3 data){
 		_internals->node = _internals->makeNode(type,data);
-		_internals->node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+		//_internals->node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	}
 	void Entity::init(const Entity_Types type, const char * mesh){ 
 		_internals->node = _internals->makeNode(type,mesh);

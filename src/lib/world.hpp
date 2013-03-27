@@ -3,6 +3,8 @@
 #include "vec.hpp"
 #include "mesh.hpp"
 namespace World {
+	class Earth;
+	class EarthFactory;
 	class Earth {
 	public:
 		virtual void instantiate() = 0;
@@ -26,5 +28,14 @@ namespace World {
 		virtual const Transform getTransformation(const size_t index) = 0;
 
 		virtual ~Earth() {};
+	};
+	class EarthFactory {
+	public:
+		virtual Earth * instantiate() = 0;
+		virtual const char * getName() = 0;
+		static void addEarth(EarthFactory * factory);
+		static size_t getEarthCount();
+		static const char * getEarthName(size_t index);
+		static EarthFactory * getEarthFactory(size_t index);
 	};
 };

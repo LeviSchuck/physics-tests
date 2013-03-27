@@ -1,6 +1,7 @@
 #include <utility>
 #include "pentity.hpp"
 #include "math.hpp"
+#include "world.hpp"
 
 namespace Physical {
 	Entity::Entity(const Entity_Types type, const bool s, World::Earth * world){
@@ -80,7 +81,9 @@ namespace Physical {
 		if(_static){
 			_body_index = _world->makeStaticBody(shape, t);
 		}else{
-			_body_index = _world->makeRigidBody(shape, mass, t);
+			MassProperties m = mass;
+			//??
+			_body_index = _world->makeRigidBody(shape, m, t);
 		}
 	}
 	size_t Entity::createShape(const Entity_Types type, const Mesh & m){

@@ -3,7 +3,7 @@
 #include "vec.hpp"
 #include "enums.hpp"
 #include "mesh.hpp"
-#include "world.hpp"
+#include "forward.hpp"
 
 namespace Physical {
 	class Entity {

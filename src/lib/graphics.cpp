@@ -1,6 +1,9 @@
+#include <iostream>
+#include <cstdlib>
 #include <OpenGL/OpenGL.h>
 #include <irrlicht/irrlicht.h>
 #include "graphics.hpp"
+
 
 class MyEventReceiver : public ::irr::IEventReceiver
 {
@@ -55,6 +58,17 @@ namespace Graphical {
 		_internals->plane_node = _internals->smgr->addMeshSceneNode(_internals->plane_mesh);
 		_internals->cam->setPosition(irr::core::vector3df(0,20,0));
 		_internals->plane_node->setPosition(irr::core::vector3df(0,0,80));
+		for(int x = 0; x < 20; x++){
+			for(int y = 0; y < 20; y++){
+				_internals->smgr->addLightSceneNode(
+					0,
+					irr::core::vector3df(15*x,15*y,15),
+        			irr::video::SColorf(rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), 1.0f), 
+        			10.0f
+        			);
+			}
+		}
+		
 	}
 	void Engine::closeup(){
 		_internals->device->drop();

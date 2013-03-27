@@ -2,32 +2,29 @@
 #include <iostream>
 
 #include "lib/graphics.hpp"
-
-#ifdef __APPLE__
-#include <CoreFoundation/CFBundle.h>
-#include <CoreFoundation/CFString.h>
-// function provides some Mac OS X specific source code to load files from the resources of the application bundle.
-char * resPath(char **argv, char* name, char* type ) 
-{
-	static char resource[1024];
-	CFURLRef cfBundleURL = CFBundleCopyResourceURL( CFBundleGetMainBundle(),    
-	CFStringCreateWithCString(kCFAllocatorDefault,name, kCFStringEncodingISOLatin1), 
-	CFStringCreateWithCString(kCFAllocatorDefault,type,kCFStringEncodingISOLatin1), 
-	NULL);
-	CFStringGetCString( CFURLCopyPath(cfBundleURL),
-		resource,1023,kCFStringEncodingISOLatin1);
-   return resource;
-}
-#pragma comment(lib, "libMacOSX.a")
-#endif
+#include "lib/world.hpp"
+#include "lib/test.hpp"
+#include "lib/testenvironment.hpp"
 
 
 int main(int argc, char* argv[]){
-	Graphical::Engine graphics;
-	graphics.setup();
-	while(!graphics.exitRequested()){
-		graphics.render();
+	Graphical::Engine * graphics = new Graphical::Engine;
+	graphics->setup();
+	std::cout << "Initiate0" << std::endl;
+	graphics->manager();
+	World::Earth * earth = World::EarthFactory::getEarthFactory(0)->instantiate();
+	TestEnvironment te(graphics,earth);
+	Testing t;
+	std::cout << "Initiate1" << std::endl;
+	t.instantiate(&te,1,0);
+
+
+
+	while(!graphics->exitRequested()){
+		graphics->render();
 	}
-	graphics.closeup();
+	graphics->closeup();
+	delete graphics;
+	delete earth;
 	return 0;
 }

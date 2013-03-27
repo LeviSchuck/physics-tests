@@ -30,10 +30,14 @@ list(APPEND main_sources
 	lib/pentity.cpp lib/pentity.hpp
 	lib/test.cpp lib/test.hpp
 	lib/vec.hpp
-	lib/world.hpp
-	null/world.cpp null/world.hpp
-
+	lib/world.cpp lib/world.hpp
+)
+list(APPEND engine_sources
+   null/nworld.cpp null/nworld.hpp
+)
+list(APPEND test_sources
+   tests/basic/test.cpp tests/basic/test.hpp
 )
 
-add_executable(phys MACOSX_BUNDLE main.cpp ${main_sources})
+add_executable(phys MACOSX_BUNDLE main.cpp apple.cpp ${main_sources} ${engine_sources} ${test_sources})
 target_link_libraries(phys Irrlicht ${EXTRA_LIBS})

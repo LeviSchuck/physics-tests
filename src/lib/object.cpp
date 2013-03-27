@@ -2,6 +2,8 @@
 #include "pentity.hpp"
 #include "gentity.hpp"
 #include "math.hpp"
+#include "testenvironment.hpp"
+#include <iostream>
 namespace World {
 	class ObjectContents {
 	public:
@@ -11,17 +13,21 @@ namespace World {
 		World::Earth * _earth;
 		Graphical::Engine * _engine;
 		bool _static;
-		ObjectContents(World::Earth * earth, Graphical::Engine * engine):
-		_earth(earth), _engine(engine), _static(false) {
-
+		ObjectContents():
+		_g(0), _p(0), _static(false) {
 		}
 		~ObjectContents(){
 			if(_p) delete _p;
 			if(_g) delete _g;
 		}
 	};
-	Object::Object(World::Earth * earth, Graphical::Engine * engine){
-		_contents = new ObjectContents(earth,engine);
+	Object::Object(TestEnvironment * env){
+		_contents = new ObjectContents();
+        {
+            _contents->_earth = env->getPhysics();
+            _contents->_engine = env->getGraphics();
+            _contents->_engine->manager();
+        }
 	}
 	void Object::init(
 		const Entity_Types type,

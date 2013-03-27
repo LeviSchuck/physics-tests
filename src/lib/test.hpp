@@ -7,28 +7,31 @@
 class Testing;
 class TestInstance;
 class TestFactory;
+class TestEnvironment;
 class TestFactory {
 public:
-	virtual TestInstance * instance(World::Earth*, float x, float y) = 0;
+	virtual TestInstance * instance(TestEnvironment*, float x, float y) = 0;
 	virtual float width() = 0;
 	virtual float length() = 0;
 	virtual const char * name() = 0;
+	static void addFactory(TestFactory * factory);
+	static size_t getFactoryCount();
+	static const char * getFactoryName(size_t index);
 };
 class Testing {
 	::std::vector<TestInstance*> instances;
 public:
-	void instance(World::Earth*, size_t count, size_t factory_index);
+	void instantiate(TestEnvironment*, size_t count, size_t factory_index);
 	void destroy();
-	static void addFactory(TestFactory * factory);
-	static size_t getFactoryCount();
-	static const char * getFactoryName(size_t index);
 
 };
 
 class TestInstance {
+protected:
+	size_t id;
 public:
 	virtual float difference(const TestInstance & other) {
-		return 1;
+		return 0;
 	}
 	virtual ~TestInstance() {};
 };
