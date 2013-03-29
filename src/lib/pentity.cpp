@@ -102,11 +102,11 @@ namespace Physical {
 		return shape;
 	}
 	size_t Entity::createShape(const Entity_Types type, const Vec3 data, float constant){
-		size_t shape;
+		size_t shape = 0;
 		switch(type){
 			case E_BAR:
 			{
-				shape = _world->addBar(data);
+				shape = _world->addBox(data);
 			}
 			break;
 			case E_SPHERE:
@@ -136,7 +136,7 @@ namespace Physical {
 				throw "Type not compatible!";
 			}
 		}
-		return 0;
+		return shape;
 	}
 
 	const Vec3 Entity::getPosition() const{

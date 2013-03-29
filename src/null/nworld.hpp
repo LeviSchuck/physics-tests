@@ -1,3 +1,4 @@
+#include <vector>
 #include "lib/world.hpp"
 
 class NullWorld : public World::Earth {
@@ -6,10 +7,9 @@ private:
 public:
     NullWorld();
     virtual ~NullWorld();
-	virtual void instantiate();
     virtual void tick(float delta);
     virtual size_t addSphere(const float radius);
-    virtual size_t addBar(const Vec3 & dimensions);
+    virtual size_t addBox(const Vec3 & dimensions);
     virtual size_t addPlane(const Vec3 & equation, const float constant);
     virtual size_t addMesh(const Mesh & mesh);
     virtual size_t addCapsule(const float length, const float radius);
@@ -25,4 +25,5 @@ public:
     
     virtual void transformBody(const size_t index, const Transform & trans);
     virtual const Transform getTransformation(const size_t index);
+    ::std::vector<size_t> getBodies();
 };

@@ -7,10 +7,9 @@ namespace World {
 	class EarthFactory;
 	class Earth {
 	public:
-		virtual void instantiate() = 0;
 		virtual void tick(float delta) = 0;
 		virtual size_t addSphere(const float radius) = 0;
-		virtual size_t addBar(const Vec3 & dimensions) = 0;
+		virtual size_t addBox(const Vec3 & dimensions) = 0;
 		virtual size_t addPlane(const Vec3 & equation, const float constant) = 0;
 		virtual size_t addMesh(const Mesh & mesh) = 0;
 		virtual size_t addCapsule(const float length, const float radius) = 0;

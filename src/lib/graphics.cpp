@@ -46,10 +46,10 @@ namespace Graphical {
 	void Engine::setup(){
 		_internals = new EngineInternals();
 		_internals->device = createDevice(driverType,
-			irr::core::dimension2d<irr::u32>(640, 480), 16, false, false, false, &_internals->receiver);
+			irr::core::dimension2d<irr::u32>(1280, 720), 16, false, false, false, &_internals->receiver);
 		_internals->driver = _internals->device->getVideoDriver();
 		_internals->smgr = _internals->device->getSceneManager();
-		_internals->cam = _internals->smgr->addCameraSceneNodeFPS();
+		_internals->cam = _internals->smgr->addCameraSceneNodeFPS(0,100,0.03);
 		_internals->device->getCursorControl()->setVisible(false);
 		_internals->lastFPS = -1;
 		_internals->plane_mesh =  _internals->smgr->getGeometryCreator()->createPlaneMesh(irr::core::dimension2d<irr::f32>(1000,1000));

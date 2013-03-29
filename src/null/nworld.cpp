@@ -35,16 +35,13 @@ NullWorld::NullWorld(){
 NullWorld::~NullWorld(){
 	delete _contents;
 }
-void NullWorld::instantiate(){
-	//None
-}
 void NullWorld::tick(float delta){
 	//Null world takes no action
 }
 size_t NullWorld::addSphere(const float radius){
 	return _contents->newid++;
 }
-size_t NullWorld::addBar(const Vec3 & dimensions){
+size_t NullWorld::addBox(const Vec3 & dimensions){
 	return _contents->newid++;
 }
 size_t NullWorld::addPlane(const Vec3 & equation, const float constant){
@@ -89,4 +86,12 @@ void NullWorld::transformBody(const size_t index, const Transform & trans){
 }
 const Transform NullWorld::getTransformation(const size_t index){
 	return _contents->bodies[index].trans;
+}
+::std::vector<size_t> NullWorld::getBodies(){
+	::std::vector<size_t> bodies;
+	bodies.reserve(_contents->bodies.size());
+	for_each(_contents->bodies.begin(), _contents->bodies.end(), [&](std::pair<const size_t, NullContainer> p){
+		bodies.push_back(p.first);
+	});
+	return bodies;
 }
