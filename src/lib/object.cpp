@@ -132,7 +132,7 @@ namespace World {
 
 	void Object::sync(){
 		_contents->_g->setPosition(_contents->_p->getPosition());
-		_contents->_g->setOrientation(_contents->_p->getEulerOrientation());
+		_contents->_g->setOrientation(_contents->_p->getQuatOrientation());
 	}
 
 	void Object::hideGraphics(){

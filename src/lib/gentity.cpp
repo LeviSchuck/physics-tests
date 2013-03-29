@@ -243,14 +243,16 @@ namespace Graphical {
 			std::tr1::get<3>(vec)
 			);
 		quat.toEuler(rot);
+		rot *= 57.2957795;
 		_internals->node->setRotation(rot);
 		//setOrientation(Math::QuaternionToEuler(vec));
 	}
 	void Entity::setOrientation(const Vec3 vec){
+		throw "This function is dead, don't use it.";
 		_internals->node->setRotation(irr::core::vector3df(
-			std::tr1::get<0>(vec)*57.2957795,
-			std::tr1::get<1>(vec)*57.2957795,
-			std::tr1::get<2>(vec)*57.2957795
+			std::tr1::get<2>(vec)*57.2957795*1.f,
+			std::tr1::get<0>(vec)*57.2957795*1.f,
+			std::tr1::get<1>(vec)*57.2957795*1.f
 			));
 	}
 	const Mesh Entity::getMesh() const{
