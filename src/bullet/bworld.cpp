@@ -1,7 +1,9 @@
 #include <map>
+#define BT_USE_DOUBLE_PRECISION
 #include <bullet/btBulletDynamicsCommon.h>
 #include <bullet/btBulletCollisionCommon.h>
 #include "bworld.hpp"
+#include <iostream>
 namespace Bullet{
 	inline btVector3 convert(const Vec3 a){
 		return btVector3(
@@ -10,7 +12,7 @@ namespace Bullet{
 			std::tr1::get<2>(a)
 			);
 	}
-	inline btQuaternion convertQ(const Vec4 a){
+	inline btQuaternion convert(const Vec4 a){
 		return btQuaternion(
 			std::tr1::get<0>(a),
 			std::tr1::get<1>(a),
@@ -19,7 +21,7 @@ namespace Bullet{
 			);
 	}
 	inline btTransform convert(const Transform t){
-		return btTransform(convertQ(t.second),convert(t.first));
+		return btTransform(convert(t.second),convert(t.first));
 	}
 	enum IndexType {
 		I_UNDEFINED = 0,
@@ -172,9 +174,14 @@ namespace Bullet{
 		if(!(_i->types[index] == I_RIGID || _i->types[index] == I_STATIC)) throw "Index does not provide a body.";
 		Transform t;
 		auto pos = _i->rigid_bodies[index]->getCenterOfMassPosition();
-		auto quat = _i->rigid_bodies[index]->getOrientation();
+		auto quat = _i->rigid_bodies[index]->getOrientation().normalized();
 		t.first = Vec3(pos.getX(),pos.getY(),pos.getZ());
 		t.second = Vec4(quat.getX(),quat.getY(),quat.getZ(),quat.getW());
+		/*std::cout << "Body Inertia: ";
+		std::cout 
+			<< quat.getX() << ", " 
+			<< quat.getY() << ", "
+			<< quat.getZ() << std::endl;*/
 		return t;
 	}
 };

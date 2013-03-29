@@ -28,7 +28,7 @@ namespace Graphical {
 			::irr::scene::ISceneNode * node = NULL;
 			::irr::scene::ISceneManager * smgr = asM(engine->manager());
 			switch(type){
-				case E_BAR:
+				case E_BOX:
 				{
 					node = smgr->addCubeSceneNode(
 						1,parent,-1,irr::core::vector3df(0, 0, 0),irr::core::vector3df(0, 0, 0),
@@ -148,7 +148,7 @@ namespace Graphical {
 			switch(shape.first.type){
 				case E_CAPSULE:
 				case E_SPHERE:
-				case E_BAR:
+				case E_BOX:
 				{
 					node = _internals->makeNode(shape.first.type,Math::Vec4ToVec3(shape.first.data));
 				}
@@ -244,12 +244,13 @@ namespace Graphical {
 			);
 		quat.toEuler(rot);
 		_internals->node->setRotation(rot);
+		//setOrientation(Math::QuaternionToEuler(vec));
 	}
 	void Entity::setOrientation(const Vec3 vec){
 		_internals->node->setRotation(irr::core::vector3df(
-			std::tr1::get<0>(vec),
-			std::tr1::get<1>(vec),
-			std::tr1::get<2>(vec)
+			std::tr1::get<0>(vec)*57.2957795,
+			std::tr1::get<1>(vec)*57.2957795,
+			std::tr1::get<2>(vec)*57.2957795
 			));
 	}
 	const Mesh Entity::getMesh() const{

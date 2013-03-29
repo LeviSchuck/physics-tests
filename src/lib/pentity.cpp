@@ -36,7 +36,7 @@ namespace Physical {
 			switch(shape.first.type){
 				case E_CAPSULE:
 				case E_SPHERE:
-				case E_BAR:
+				case E_BOX:
 				case E_PLANE:
 				{
 					size_t s = createShape(
@@ -104,7 +104,7 @@ namespace Physical {
 	size_t Entity::createShape(const Entity_Types type, const Vec3 data, float constant){
 		size_t shape = 0;
 		switch(type){
-			case E_BAR:
+			case E_BOX:
 			{
 				shape = _world->addBox(data);
 			}

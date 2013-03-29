@@ -6,6 +6,6 @@ namespace Math{
 	const Vec4 EulerToQuaternion(const Vec3);
 	const Vec4 Vec3ToVec4(const Vec3);
 	const Vec3 Vec4ToVec3(const Vec4);
-	const float VecLast(const Vec4);
-	const float VecLast(const Vec3);
+	const Scalar VecLast(const Vec4);
+	const Scalar VecLast(const Vec3);
 };

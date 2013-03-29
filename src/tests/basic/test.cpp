@@ -13,6 +13,10 @@ public:
             obs.back()->init(E_SPHERE, Vec4(1,0,0,0),MassProperties(4,0),Transform(Vec3(
                 x+(rand() % 100)/10.f,i*2.1f,y+rand() % 10
                 ),Vec4(0,0,0,1)));
+            obs.push_back(new World::Object(env));
+            obs.back()->init(E_BOX, Vec4((rand() % 100)/10.f,(rand() % 100)/10.f,(rand() % 100)/10.f,0),MassProperties((rand() % 100)/40.f,0),Transform(Vec3(
+                x+(rand() % 100)/10.f,i*2.1f,y+rand() % 10
+                ),Vec4(0,0,0,1)));
         }
        
 	}

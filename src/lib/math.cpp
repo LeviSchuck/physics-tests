@@ -65,10 +65,10 @@ namespace Math{
 		std::tr1::get<2>(r) = std::tr1::get<2>(v);
 		return r;
 	}
-	const float VecLast(const Vec4 v){
+	const Scalar VecLast(const Vec4 v){
 		return std::tr1::get<3>(v);
 	}
-	const float VecLast(const Vec3 v){
+	const Scalar VecLast(const Vec3 v){
 		return std::tr1::get<2>(v);
 	}
 
