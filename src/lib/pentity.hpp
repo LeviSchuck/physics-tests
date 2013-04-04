@@ -31,6 +31,8 @@ namespace Physical {
 		void setOrientation(const Vec4 vec);
 		void setOrientation(const Vec3 vec);
 		void setTransform(const Transform t);
+		void setVelocity(const Vec3 vec);
+		void setAngularVelocity(const Vec3 vec);
 
 		inline const Entity_Types type() const {return _type;}
 	};

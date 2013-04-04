@@ -40,6 +40,7 @@ list(APPEND engine_sources
 )
 list(APPEND test_sources
    tests/basic/test.cpp tests/basic/test.hpp
+   tests/ballwall/test.cpp tests/ballwall/test.hpp
 )
 
 

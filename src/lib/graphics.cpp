@@ -49,20 +49,32 @@ namespace Graphical {
 			irr::core::dimension2d<irr::u32>(1280, 720), 16, false, false, false, &_internals->receiver);
 		_internals->driver = _internals->device->getVideoDriver();
 		_internals->smgr = _internals->device->getSceneManager();
-		_internals->cam = _internals->smgr->addCameraSceneNodeFPS(0,100,0.03);
+		_internals->cam = _internals->smgr->addCameraSceneNodeFPS(0,100,0.06);
 		_internals->device->getCursorControl()->setVisible(false);
 		_internals->lastFPS = -1;
-		_internals->plane_mesh =  _internals->smgr->getGeometryCreator()->createPlaneMesh(irr::core::dimension2d<irr::f32>(1000,1000));
+		_internals->plane_mesh =  _internals->smgr->getGeometryCreator()->createPlaneMesh(irr::core::dimension2d<irr::f32>(2000,2000));
 		//smgr->addLightSceneNode(0, core::vector3df(-15,5,-105), video::SColorf(1.0f, 1.0f, 1.0f));
-		_internals->smgr->setAmbientLight(irr::video::SColor(0,60,60,60));
+		//_internals->smgr->setAmbientLight(irr::video::SColor(0,600,600,600));
 		_internals->plane_node = _internals->smgr->addMeshSceneNode(_internals->plane_mesh);
 		_internals->cam->setPosition(irr::core::vector3df(0,20,0));
-		_internals->plane_node->setPosition(irr::core::vector3df(0,0,80));
-		for(int x = 0; x < 20; x++){
-			for(int y = 0; y < 20; y++){
+		_internals->plane_node->setPosition(irr::core::vector3df(0,0,0));
+		_internals->smgr->addLightSceneNode(
+					0,
+					irr::core::vector3df(0,1500,0),
+        			irr::video::SColorf(1.0, 1.0, 1.0, 1.0f), 
+        			1800.0f
+        			);
+		for(int x = 0; x < 200; x++){
+			for(int y = 0; y < 200; y++){
 				_internals->smgr->addLightSceneNode(
 					0,
 					irr::core::vector3df(15*x,15,15*y),
+        			irr::video::SColorf(rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), 1.0f), 
+        			10.0f
+        			);
+				_internals->smgr->addLightSceneNode(
+					0,
+					irr::core::vector3df(-15*x,15,-15*y),
         			irr::video::SColorf(rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), 1.0f), 
         			10.0f
         			);

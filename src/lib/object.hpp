@@ -22,13 +22,15 @@ namespace World {
 		void setOrientation(const Vec4 vec);
 		void setOrientation(const Vec3 vec);
 		void setStatic(bool);
+		void setVelocity(const Vec3 vec);
+		void setAngularVelocity(const Vec3 vec);
 
 		void sync();
 
 		void hideGraphics();
 		void showGraphics();
 
-		void color(const Vec4 color);
+		void setColor(const Vec4 color);
 
 		const Mesh getMesh() const;
 

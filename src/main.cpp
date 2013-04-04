@@ -9,6 +9,7 @@
 
 int main(int argc, char* argv[]){
 	const size_t index = 2;
+	const size_t test_index = 1;
 	Graphical::Engine * graphics = new Graphical::Engine;
 	graphics->setup();
 	graphics->manager();
@@ -16,7 +17,7 @@ int main(int argc, char* argv[]){
 	TestEnvironment te(graphics,earth);
 	Testing t;
 	std::cout << "Engine: " << World::EarthFactory::getEarthFactory(index)->getName() << std::endl;
-	t.instantiate(&te,1,0);
+	t.instantiate(&te,1,test_index);
 
 
 	double elapsedTime = 0;

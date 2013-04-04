@@ -26,4 +26,6 @@ public:
     virtual void transformBody(const size_t index, const Transform & trans);
     virtual const Transform getTransformation(const size_t index);
     ::std::vector<size_t> getBodies();
+    virtual void setVelocity(const size_t index, const Vec3 velocity);
+        virtual void setAngularVelocity(const size_t index, const Vec3 velocity);
 };

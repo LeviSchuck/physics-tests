@@ -95,3 +95,9 @@ const Transform NullWorld::getTransformation(const size_t index){
 	});
 	return bodies;
 }
+void NullWorld::setVelocity(const size_t index, const Vec3 velocity){
+	 //Nothing
+}
+void NullWorld::setAngularVelocity(const size_t index, const Vec3 velocity){
+	//Nothing
+}

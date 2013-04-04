@@ -25,6 +25,8 @@ namespace World {
 
 		virtual void transformBody(const size_t index, const Transform & trans) = 0;
 		virtual const Transform getTransformation(const size_t index) = 0;
+		virtual void setVelocity(const size_t index, const Vec3 velocity) = 0;
+		virtual void setAngularVelocity(const size_t index, const Vec3 velocity) = 0;
 
 		virtual ~Earth() {};
 	};

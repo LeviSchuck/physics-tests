@@ -30,13 +30,15 @@ namespace Graphical {
 			switch(type){
 				case E_BOX:
 				{
-					node = smgr->addCubeSceneNode(
-						1,parent,-1,irr::core::vector3df(0, 0, 0),irr::core::vector3df(0, 0, 0),
-						irr::core::vector3df(
-							std::tr1::get<0>(data),
-							std::tr1::get<1>(data),
-							std::tr1::get<2>(data))
-						);
+					node = smgr->addEmptySceneNode(parent);
+					auto c = smgr->addCubeSceneNode(1,node);
+					c->setScale(irr::core::vector3df(
+						std::tr1::get<0>(data)*2.0,
+						std::tr1::get<1>(data)*2.0,
+						std::tr1::get<2>(data)*2.0
+						));
+					//irr::core::vector3df rot(0,90,180);
+					//c->setRotation(rot);
 				}
 				break;
 				case E_SPHERE:
@@ -207,10 +209,10 @@ namespace Graphical {
 	}
 	void Entity::color(const Vec4 color){
 		irr::video::SColor color2(
-			std::tr1::get<0>(color)*255,
-			std::tr1::get<1>(color)*255,
-			std::tr1::get<2>(color)*255,
-			std::tr1::get<3>(color)*255
+			std::tr1::get<0>(color),
+			std::tr1::get<1>(color),
+			std::tr1::get<2>(color),
+			std::tr1::get<3>(color)
 			);
 		
 		for(size_t i = 0; i < _internals->node->getMaterialCount(); ++i){
@@ -244,6 +246,7 @@ namespace Graphical {
 			);
 		quat.toEuler(rot);
 		rot *= 57.2957795;
+
 		_internals->node->setRotation(rot);
 		//setOrientation(Math::QuaternionToEuler(vec));
 	}

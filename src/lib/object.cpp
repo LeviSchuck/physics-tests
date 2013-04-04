@@ -146,7 +146,7 @@ namespace World {
 		}
 	}
 
-	void Object::color(const Vec4 color){
+	void Object::setColor(const Vec4 color){
 		if(_contents->_g){
 			_contents->_g->color(color);
 		}
@@ -161,5 +161,15 @@ namespace World {
 			return _contents->_g->getMesh();
 		}
 		return m;
+	}
+	void Object::setVelocity(const Vec3 vec){
+		if(_contents->_p){
+			_contents->_p->setVelocity(vec);
+		}
+	}
+	void Object::setAngularVelocity(const Vec3 vec){
+		if(_contents->_p){
+			_contents->_p->setAngularVelocity(vec);
+		}
 	}
 };

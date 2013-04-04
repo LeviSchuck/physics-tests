@@ -184,6 +184,16 @@ namespace Bullet{
 			<< quat.getZ() << std::endl;*/
 		return t;
 	}
+	void BulletWorld::setVelocity(const size_t index, const Vec3 velocity){
+		if(_i->types[index] != I_RIGID) throw "Index does not provide a body.";
+		auto v = convert(velocity);
+		_i->rigid_bodies[index]->setLinearVelocity(v);
+	}
+	void BulletWorld::setAngularVelocity(const size_t index, const Vec3 velocity){
+		if(_i->types[index] != I_RIGID) throw "Index does not provide a body.";
+		auto v = convert(velocity);
+		_i->rigid_bodies[index]->setAngularVelocity(v);
+	}
 };
 class BulletWorldFactory : public World::EarthFactory {
 public:

@@ -168,4 +168,10 @@ namespace Physical {
 	void Entity::setOrientation(const Vec3 vec){
 		setOrientation(Math::EulerToQuaternion(vec));
 	}
+	void Entity::setVelocity(const Vec3 vec){
+		_world->setVelocity(_body_index,vec);
+	}
+	void Entity::setAngularVelocity(const Vec3 vec){
+		_world->setAngularVelocity(_body_index,vec);
+	}
 };
