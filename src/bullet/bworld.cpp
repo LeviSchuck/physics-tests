@@ -60,6 +60,7 @@ namespace Bullet{
 					bt_solver,
 					bt_collisionConfig
 					);
+				bt_world->setGravity(btVector3(0,-9.8,0));
 			}
 		}
 		~BulletWorldInternals(){

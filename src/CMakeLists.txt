@@ -81,6 +81,13 @@ INCLUDE_DIRECTORIES(
   ~/PhysX/Include
   ~/PhysX/Include/extensions
 )
+LIST(APPEND PHYS_LIBS 
+  ode
+)
+LIST(APPEND engine_sources
+  ode/oworld.cpp ode/oworld.hpp
+)
+
 
 add_executable(phys ${APPLE_STUFF} main.cpp ${main_sources} ${engine_sources} ${test_sources})
 target_link_libraries(phys Irrlicht ${EXTRA_LIBS} ${PHYS_LIBS})
