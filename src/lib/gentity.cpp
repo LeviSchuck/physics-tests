@@ -33,9 +33,9 @@ namespace Graphical {
 					node = smgr->addEmptySceneNode(parent);
 					auto c = smgr->addCubeSceneNode(1,node);
 					c->setScale(irr::core::vector3df(
-						std::tr1::get<0>(data)*2.0,
-						std::tr1::get<1>(data)*2.0,
-						std::tr1::get<2>(data)*2.0
+						std::tr1::get<0>(data),
+						std::tr1::get<1>(data),
+						std::tr1::get<2>(data)
 						));
 					//irr::core::vector3df rot(0,90,180);
 					//c->setRotation(rot);

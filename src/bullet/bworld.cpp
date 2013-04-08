@@ -93,7 +93,7 @@ namespace Bullet{
 		return _i->newid++;
 	}
 	size_t BulletWorld::addBox(const Vec3 & dimensions){
-		btBoxShape *box = new btBoxShape(convert(dimensions));
+		btBoxShape *box = new btBoxShape(convert(dimensions)/2.0);
 		_i->shapes[_i->newid] = box;
 		_i->types[_i->newid] = I_SHAPE;
 		return _i->newid++;

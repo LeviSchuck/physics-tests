@@ -61,6 +61,26 @@ LIST(APPEND PHYS_LIBS BulletDynamics BulletCollision LinearMath)
 list(APPEND engine_sources
    bullet/bworld.cpp bullet/bworld.hpp
 )
+set(PHYSX_LIB_PATH /Users/kloplop321/PhysX/Lib/osx64)
+LIST(APPEND PHYS_LIBS 
+  ${PHYSX_LIB_PATH}/libPhysX3Cooking.a
+  ${PHYSX_LIB_PATH}/libPhysX3Extensions.a
+  ${PHYSX_LIB_PATH}/libPhysX3.a
+  ${PHYSX_LIB_PATH}/libPhysX3Common.a
+  ${PHYSX_LIB_PATH}/libPxTask.a
+  ${PHYSX_LIB_PATH}/libSimulationController.a
+  ${PHYSX_LIB_PATH}/libSceneQuery.a
+  ${PHYSX_LIB_PATH}/libLowLevel.a
+  ${PHYSX_LIB_PATH}/libPhysXProfileSDK.a
+  ${PHYSX_LIB_PATH}/libLowLevelCloth.a
+)
+LIST(APPEND engine_sources
+  physx/pworld.cpp physx/pworld.hpp
+)
+INCLUDE_DIRECTORIES(
+  ~/PhysX/Include
+  ~/PhysX/Include/extensions
+)
 
 add_executable(phys ${APPLE_STUFF} main.cpp ${main_sources} ${engine_sources} ${test_sources})
 target_link_libraries(phys Irrlicht ${EXTRA_LIBS} ${PHYS_LIBS})

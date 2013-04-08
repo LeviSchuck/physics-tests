@@ -14,7 +14,7 @@ public:
             double offset = i*20.0;
             for(int j = 0; j < 3; j++){
                 obs.push_back(new World::Object(env));
-                obs.back()->init(E_BOX, Vec4(1,10,10,0),MassProperties(8,0),Transform(Vec3(x+10+j*50,10,y+offset+aoffset),Vec4(0,0,0,1)));
+                obs.back()->init(E_BOX, Vec4(1,20,20,0),MassProperties(8,0),Transform(Vec3(x+10+j*50,10,y+offset+aoffset),Vec4(0,0,0,1)));
                 obs.back()->setColor(color);
             }
             obs.push_back(new World::Object(env));

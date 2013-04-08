@@ -8,8 +8,8 @@
 
 
 int main(int argc, char* argv[]){
-	const size_t index = 2;
-	const size_t test_index = 1;
+	const size_t index = 3;
+	const size_t test_index = 0;
 	Graphical::Engine * graphics = new Graphical::Engine;
 	graphics->setup();
 	graphics->manager();
