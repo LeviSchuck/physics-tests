@@ -17,7 +17,7 @@ namespace ODE {
 		S_BOX,
 		S_SPHERE
 	};
-    static dJointGroupID contactgroup;
+    static dJointGroupID contactgroup = dJointGroupCreate(4000);
     static dWorldID stworld;
     static void nearCallback (void *data, dGeomID o1, dGeomID o2){
         dBodyID b1 = dGeomGetBody(o1);
