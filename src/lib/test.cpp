@@ -16,9 +16,17 @@ void Testing::instantiate(TestEnvironment * env, size_t count, size_t factory_in
 		throw "Out of range";
 	}
 	TestFactory * f = testfactories[factory_index];
-	float width = f->width();
+	double width = f->width();
+	double length = f->length();
+	double w,l;
+	w = l = 0;
+	if(width > length){
+		l = length;
+	}else{
+		w = width;
+	}
 	for(size_t i = 0; i < count; ++i){
-		instances.push_back(f->instance(env, width*(float)i,0));
+		instances.push_back(f->instance(env, w*(double)i,l*(double)i));
 	}
 }
 void Testing::destroy(){

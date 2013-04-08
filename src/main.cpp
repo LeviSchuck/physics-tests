@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
 	TestEnvironment te(graphics,earth);
 	Testing t;
 	std::cout << "Engine: " << World::EarthFactory::getEarthFactory(index)->getName() << std::endl;
-	t.instantiate(&te,1,test_index);
+	t.instantiate(&te,5,test_index);
 
 
 	double elapsedTime = 0;

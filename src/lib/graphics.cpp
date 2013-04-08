@@ -64,19 +64,21 @@ namespace Graphical {
         			irr::video::SColorf(1.0, 1.0, 1.0, 1.0f), 
         			1800.0f
         			);
-		for(int x = 0; x < 200; x++){
-			for(int y = 0; y < 200; y++){
+		const int dist = 60;
+		const int gridmax = 50;
+		for(int x = 0; x < gridmax; x++){
+			for(int y = 0; y < gridmax; y++){
 				_internals->smgr->addLightSceneNode(
 					0,
-					irr::core::vector3df(15*x,15,15*y),
+					irr::core::vector3df(dist*x,dist,dist*y),
         			irr::video::SColorf(rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), 1.0f), 
-        			10.0f
+        			dist
         			);
 				_internals->smgr->addLightSceneNode(
 					0,
-					irr::core::vector3df(-15*x,15,-15*y),
+					irr::core::vector3df(-dist*x,dist,-dist*y),
         			irr::video::SColorf(rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), rand()/((float)RAND_MAX), 1.0f), 
-        			10.0f
+        			dist
         			);
 			}
 		}

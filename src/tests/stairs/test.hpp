@@ -1,11 +1,11 @@
 #pragma once
 #include "lib/test.hpp"
 
-class BallWallTestFactory : public TestFactory {
+class StairTestFactory : public TestFactory {
 public:
 	virtual TestInstance * instance(TestEnvironment*, float x, float y);
-	virtual float width(){return 200;}
-	virtual float length(){return 1000;}
+	virtual float width();
+	virtual float length();
 	virtual const char * name() {return "Basic Test";}
-    BallWallTestFactory();
+    StairTestFactory();
 };

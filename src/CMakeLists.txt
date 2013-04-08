@@ -1,5 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
 project(phys)
+SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules;${CMAKE_MODULE_PATH}")
 IF(APPLE)
    INCLUDE_DIRECTORIES ( /System/Library/Frameworks )
    FIND_LIBRARY(COCOA_LIBRARY Cocoa)
@@ -41,6 +42,7 @@ list(APPEND engine_sources
 list(APPEND test_sources
    tests/basic/test.cpp tests/basic/test.hpp
    tests/ballwall/test.cpp tests/ballwall/test.hpp
+   tests/stairs/test.cpp
 )
 
 

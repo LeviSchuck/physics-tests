@@ -45,7 +45,7 @@ namespace Graphical {
 				{
 					node = smgr->addSphereSceneNode(
 						std::tr1::get<0>(data),
-						16,
+						24,
 						parent
 						);
 
